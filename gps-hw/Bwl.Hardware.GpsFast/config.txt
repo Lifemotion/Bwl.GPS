@@ -1,0 +1,5 @@
+baudrate=9600
+check_devname=
+fw_file=Cf.Orlan.Hardware.TimeSync.Fw.hex
+wait_for_exit_boot=12
+check_after=
