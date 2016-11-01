@@ -52,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -80,7 +81,15 @@
     <Compile Include="CarMeter.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GpsSource.vb" />
+    <Compile Include="GpsDistanse.vb" />
+    <Compile Include="Source\GpsEmulator.Designer.vb">
+      <DependentUpon>GpsEmulator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Source\GpsEmulator.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\GpsSource.vb" />
+    <Compile Include="Source\IGpsSource.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -97,6 +106,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="NmeaTools.vb" />
+    <Compile Include="Recorder.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CarMeter.resx">
@@ -107,6 +117,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\GpsEmulator.resx">
+      <DependentUpon>GpsEmulator.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +132,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

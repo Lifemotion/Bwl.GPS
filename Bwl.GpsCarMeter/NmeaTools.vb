@@ -1,10 +1,28 @@
 ﻿Public Class GeoLocation
     Public Property Lon As Double
     Public Property Lat As Double
+
     Public Overrides Function ToString() As String
-        Dim res = Lat.ToString().Replace(",", ".") + "," + Lon.ToString().Replace(",", ".")
+        Dim res = Lat.ToString("0.0000000").Replace(",", ".") + "," + Lon.ToString("0.0000000").Replace(",", ".")
         Return res
     End Function
+
+    Public Sub New()
+
+    End Sub
+
+    Public Sub New(lat As Double, lon As Double)
+        Me.Lat = lat
+        Me.Lon = lon
+    End Sub
+
+    Public Sub New(str As String)
+        Dim parts = str.Split(",")
+        If parts.Length = 2 Then
+            Lat = CDbl(parts(0).Replace(".", ","))
+            Lon = CDbl(parts(1).Replace(".", ","))
+        End If
+    End Sub
 End Class
 
 Public Class GpsData

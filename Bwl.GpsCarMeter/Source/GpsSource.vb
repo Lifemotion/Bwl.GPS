@@ -1,8 +1,9 @@
 ﻿Public Class GpsSource
+    Implements IGpsSource
     Private _port As New IO.Ports.SerialPort
     Private _thread As New Threading.Thread(AddressOf ReadThread)
 
-    Public Event GpsUpdate(data As GpsData)
+    Public Event GpsUpdate(data As GpsData) Implements IGpsSource.GpsUpdate
 
     Private Sub ReadThread()
         Do
@@ -25,7 +26,7 @@
         _thread.Start()
     End Sub
 
-    Public Sub Open()
+    Public Sub Open() Implements IGpsSource.Open
         _port.BaudRate = 38400
         _port.PortName = IO.Ports.SerialPort.GetPortNames(0)
         _port.Open()
