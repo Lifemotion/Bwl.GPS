@@ -1,3 +1,3 @@
-tools\vs-build-all.exe -debug -release -m BuildAll.sln BuildAll.Fw4.sln
+tools\vs-build-all.exe -debug *
 
 pause
