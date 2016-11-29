@@ -1,3 +1,3 @@
-tools\vs-build-all.exe -debug *
+tools\vs-build-all.exe -debug -release *
 
 pause
