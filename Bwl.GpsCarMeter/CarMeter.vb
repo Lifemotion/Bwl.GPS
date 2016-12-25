@@ -22,7 +22,9 @@ Public Class CarMeter
         If _avgSpeed = "point1" Then
             Dim dist1 = GpsDistanse.GetDistance(_lastData.Location.ToString, tbPoint1.Text)
             Dim dist2 = GpsDistanse.GetDistance(_gpsData.Location.ToString, tbPoint1.Text)
-            If dist2 > dist1 + _pointFixDistance.Value Then
+            Dim diff = dist2 - dist1
+            _logger.AddDebug(diff.ToString("0.00"))
+            If diff > _pointFixDistance.Value Then
                 _avgSpeedP1 = _gpsData
                 _logger.AddMessage("Point 1 Captured, Avg Speed start")
                 tbAvgSpeedTime1.Text = _gpsData.DateTimeUtc.ToString("HH:mm:ss:fff") + " " + _gpsData.Speed.ToString("0")
@@ -34,7 +36,9 @@ Public Class CarMeter
         If _avgSpeed = "point0" Then
             Dim dist1 = GpsDistanse.GetDistance(_lastData.Location.ToString, tbPoint0.Text)
             Dim dist2 = GpsDistanse.GetDistance(_gpsData.Location.ToString, tbPoint0.Text)
-            If dist2 > dist1 + _pointFixDistance.Value Then
+            Dim diff = dist2 - dist1
+            _logger.AddDebug(diff.ToString("0.00"))
+            If diff > _pointFixDistance.Value Then
                 _avgSpeedP1 = _gpsData
                 _logger.AddMessage("Point Speed Meashured, " + _gpsData.Speed.ToString("0.0") + " km/h")
                 tbPoint0time.Text = _gpsData.DateTimeUtc.ToString("HH:mm:ss:fff") + " " + _gpsData.Speed.ToString("0")
@@ -48,7 +52,9 @@ Public Class CarMeter
             _logger.AddMessage(_gpsData.DateTimeUtc.ToString("HH:mm:ss:fff") + " " + _gpsData.Speed.ToString("0"))
             Dim dist1 = GpsDistanse.GetDistance(_lastData.Location.ToString, tbPoint2.Text)
             Dim dist2 = GpsDistanse.GetDistance(_gpsData.Location.ToString, tbPoint2.Text)
-            If dist2 > dist1 + _pointFixDistance.Value Then
+            Dim diff = dist2 - dist1
+            _logger.AddDebug(diff.ToString("0.00"))
+            If diff > _pointFixDistance.Value Then
                 _avgSpeedP2 = _gpsData
                 _logger.AddMessage("Point 2 Captured, Avg Speed Finished")
                 tbAvgSpeedTime2.Text = _gpsData.DateTimeUtc.ToString("HH:mm:ss:fff") + " " + _gpsData.Speed.ToString("0")
@@ -162,6 +168,7 @@ Public Class CarMeter
         tbAvgSpeed.Text = ""
         tbPoint0time.Text = ""
         tbPointSpeed.Text = ""
+        _logger.AddMessage("Starting speed metering")
         _avgSpeed = "point1"
         _avgSpeeds.Clear()
     End Sub
