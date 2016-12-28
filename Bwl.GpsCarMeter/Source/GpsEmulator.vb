@@ -3,7 +3,7 @@
 Public Class GpsEmulator
     Implements IGpsSource
 
-    Public Event GpsUpdate(data As GpsData) Implements IGpsSource.GpsUpdate
+    Public Event GpsUpdate(data As GpsData, raw As String) Implements IGpsSource.GpsUpdate
     Private map1 As New PointF(59.0883, 37.9075)
     Private map2 As New PointF(59.0796, 37.9287)
     Private point As PointF = map2
@@ -40,7 +40,10 @@ Public Class GpsEmulator
         gps.Location.Lat = point.X
         gps.Location.Lon = point.Y
         gps.Speed = diff * 100000
-        RaiseEvent GpsUpdate(gps)
+        'Dim position As String = "4807.038,N,01131.000,E"
+        Dim position As String = (gps.Location.Lat * 100).ToString("0000.000") + ",N," + (gps.Location.Lon * 100).ToString("00000.000") + ",E"
+        Dim rmc = "$GPRMC," + gps.DateTimeUtc.ToString("HHmmss.fff") + ",A," + position + ",000.0,000.0," + gps.DateTimeUtc.ToString("ddMMyy") + ",003.1,W*6A"
+        RaiseEvent GpsUpdate(gps, rmc)
         lastPoint = point
     End Sub
 End Class

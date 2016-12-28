@@ -8,16 +8,16 @@ Public Class CarMeter
     Private _rate As Integer
     Private _gpsData As New GpsData
     Private _lastData As GpsData
-    Private _recorder As New Recorder(AppBase.DataFolder)
+    Private _recorder As New Recorder(AppBase.DataFolder, AppBase.RootLogger)
     Private _pointFixDistance As New DoubleSetting(_storage, "PointFixDist", 1.0)
 
-    Private Sub _gps_GpsUpdate(data As GpsData) Handles _gps.GpsUpdate
+    Private Sub _gps_GpsUpdate(data As GpsData, raw As String) Handles _gps.GpsUpdate
         _lastData = _gpsData
         _gpsData = data
         If _lastData Is Nothing Then _lastData = _gpsData
 
         _rate += 1
-        _recorder.Write(data)
+        _recorder.Write(data, raw)
 
         If _avgSpeed = "point1" Then
             Dim dist1 = GpsDistanse.GetDistance(_lastData.Location.ToString, tbPoint1.Text)
@@ -82,12 +82,13 @@ Public Class CarMeter
     End Sub
 
     Private Sub CarMeter_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Text += " " + Application.ProductVersion.ToString
         Try
             _gps = New GpsSource
             _gps.Open()
             _logger.AddMessage("GPS open")
         Catch ex As Exception
-            _logger.AddError(ex.Message)
+            _logger.AddError("GPS open error: " + ex.Message)
             _gps = New GpsEmulator
             _gps.Open()
         End Try
