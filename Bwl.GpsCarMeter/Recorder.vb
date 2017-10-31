@@ -21,8 +21,15 @@ Public Class Recorder
             _recordFile = IO.File.CreateText(IO.Path.Combine(_datafolder, filename))
             _recordFileRaw = IO.File.CreateText(IO.Path.Combine(_datafolder, filenameRaw))
         End SyncLock
+        _max = 0
+        _avg = 0
+        _avgCnt = 0
         _logger.AddMessage("Record start: " + filename)
     End Sub
+
+    Private _max As Single
+    Private _avg As Single
+    Private _avgCnt As Integer
 
     Public Sub RecordStop()
         SyncLock Me
@@ -31,7 +38,7 @@ Public Class Recorder
             _recordFile = Nothing
             _recordFileRaw = Nothing
         End SyncLock
-        _logger.AddMessage("Record stop")
+        _logger.AddMessage("Record stop, max " + _max.ToString("0.0") + " avg " + (_avg / _avgCnt).ToString("0.0"))
     End Sub
 
     Public ReadOnly Property Recording As Boolean
@@ -54,6 +61,9 @@ Public Class Recorder
                 Catch ex As Exception
                 End Try
             End If
+            If data.Speed > _max Then _max = data.Speed
+            _avg += data.Speed
+            _avgCnt += 1
         End SyncLock
     End Sub
 End Class
