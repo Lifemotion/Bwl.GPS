@@ -34,16 +34,16 @@ Public Class CarMeter
         End If
 
         If _avgSpeed = "point0" Then
-            Dim dist1 = GpsDistanse.GetDistance(_lastData.Location.ToString, tbPoint0.Text)
+            '  Dim dist1 = GpsDistanse.GetDistance(_lastData.Location.ToString, tbPoint0.Text)
             Dim dist2 = GpsDistanse.GetDistance(_gpsData.Location.ToString, tbPoint0.Text)
-            Dim diff = dist2 - dist1
-            _logger.AddDebug(diff.ToString("0.00"))
-            If diff > _pointFixDistance.Value Then
+            '   Dim diff = dist2 - dist1
+            _logger.AddDebug(dist2.ToString("0.00"))
+            If dist2 < _pointFixDistance.Value Then
                 _avgSpeedP1 = _gpsData
                 _logger.AddMessage("Point Speed Meashured, " + _gpsData.Speed.ToString("0.0") + " km/h")
-                tbPoint0time.Text = _gpsData.DateTimeUtc.ToString("HH:mm:ss:fff") + " " + _gpsData.Speed.ToString("0")
-                tbPointSpeed.Text = "Speed " + _gpsData.Speed.ToString("0.0") + " km/h"
+                '       tbPoint0time.Text = _gpsData.DateTimeUtc.ToString("HH:mm:ss:fff") + " " + _gpsData.Speed.ToString("0")
                 _avgSpeed = "done"
+                Me.Invoke(Sub() tbPointSpeed.Text = "Speed " + _gpsData.Speed.ToString("0.0") + " km/h")
             End If
         End If
 
@@ -128,7 +128,10 @@ Public Class CarMeter
             End If
         Else
             If cbAutostartRecord1.Checked Then
-                If _gpsData.Speed > 2 And _gpsData.Speed < 10 Then _recorder.RecordStart("onmove")
+                If _gpsData.Speed > 2 And _gpsData.Speed < 10 Then _recorder.RecordStart("onmove1")
+            End If
+            If cbAutostartRecord30.Checked Then
+                If _gpsData.Speed > 30 And _gpsData.Speed < 40 Then _recorder.RecordStart("onmove30")
             End If
             If cbAutostartRecord70.Checked Then
                 If _gpsData.Speed < 70 And _gpsData.Speed > 60 Then _recorder.RecordStart("below70")

@@ -23,6 +23,7 @@ Partial Class CarMeter
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbAutostartRecord30 = New System.Windows.Forms.CheckBox()
         Me.cbAutostartRecord70 = New System.Windows.Forms.CheckBox()
         Me.cbAutostopRecordAt100 = New System.Windows.Forms.CheckBox()
         Me.cbAutostopRecordAt0 = New System.Windows.Forms.CheckBox()
@@ -37,15 +38,15 @@ Partial Class CarMeter
         Me.tRate = New System.Windows.Forms.Timer(Me.components)
         Me.tTime = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.tbAvgSpeed = New System.Windows.Forms.TextBox()
+        Me.tbAvgSpeedTime2 = New System.Windows.Forms.TextBox()
+        Me.tbAvgSpeedTime1 = New System.Windows.Forms.TextBox()
+        Me.bMeashureAverage = New System.Windows.Forms.Button()
         Me.tbAverageSpeedInfo = New System.Windows.Forms.TextBox()
         Me.bPoint2Set = New System.Windows.Forms.Button()
         Me.bPoint1Set = New System.Windows.Forms.Button()
         Me.tbPoint2 = New System.Windows.Forms.TextBox()
         Me.tbPoint1 = New System.Windows.Forms.TextBox()
-        Me.bMeashureAverage = New System.Windows.Forms.Button()
-        Me.tbAvgSpeedTime1 = New System.Windows.Forms.TextBox()
-        Me.tbAvgSpeedTime2 = New System.Windows.Forms.TextBox()
-        Me.tbAvgSpeed = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.tbPointSpeed = New System.Windows.Forms.TextBox()
         Me.tbPoint0time = New System.Windows.Forms.TextBox()
@@ -65,6 +66,7 @@ Partial Class CarMeter
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.cbAutostartRecord30)
         Me.GroupBox1.Controls.Add(Me.cbAutostartRecord70)
         Me.GroupBox1.Controls.Add(Me.cbAutostopRecordAt100)
         Me.GroupBox1.Controls.Add(Me.cbAutostopRecordAt0)
@@ -79,15 +81,25 @@ Partial Class CarMeter
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 27)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(297, 287)
+        Me.GroupBox1.Size = New System.Drawing.Size(297, 381)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GPS"
         '
+        'cbAutostartRecord30
+        '
+        Me.cbAutostartRecord30.AutoSize = True
+        Me.cbAutostartRecord30.Location = New System.Drawing.Point(6, 207)
+        Me.cbAutostartRecord30.Name = "cbAutostartRecord30"
+        Me.cbAutostartRecord30.Size = New System.Drawing.Size(187, 20)
+        Me.cbAutostartRecord30.TabIndex = 12
+        Me.cbAutostartRecord30.Text = "Auto Start Record > 30 kmh"
+        Me.cbAutostartRecord30.UseVisualStyleBackColor = True
+        '
         'cbAutostartRecord70
         '
         Me.cbAutostartRecord70.AutoSize = True
-        Me.cbAutostartRecord70.Location = New System.Drawing.Point(6, 207)
+        Me.cbAutostartRecord70.Location = New System.Drawing.Point(6, 233)
         Me.cbAutostartRecord70.Name = "cbAutostartRecord70"
         Me.cbAutostartRecord70.Size = New System.Drawing.Size(187, 20)
         Me.cbAutostartRecord70.TabIndex = 11
@@ -97,7 +109,7 @@ Partial Class CarMeter
         'cbAutostopRecordAt100
         '
         Me.cbAutostopRecordAt100.AutoSize = True
-        Me.cbAutostopRecordAt100.Location = New System.Drawing.Point(5, 261)
+        Me.cbAutostopRecordAt100.Location = New System.Drawing.Point(6, 285)
         Me.cbAutostopRecordAt100.Name = "cbAutostopRecordAt100"
         Me.cbAutostopRecordAt100.Size = New System.Drawing.Size(195, 20)
         Me.cbAutostopRecordAt100.TabIndex = 10
@@ -107,7 +119,7 @@ Partial Class CarMeter
         'cbAutostopRecordAt0
         '
         Me.cbAutostopRecordAt0.AutoSize = True
-        Me.cbAutostopRecordAt0.Location = New System.Drawing.Point(5, 235)
+        Me.cbAutostopRecordAt0.Location = New System.Drawing.Point(6, 259)
         Me.cbAutostopRecordAt0.Name = "cbAutostopRecordAt0"
         Me.cbAutostopRecordAt0.Size = New System.Drawing.Size(181, 20)
         Me.cbAutostopRecordAt0.TabIndex = 9
@@ -213,6 +225,36 @@ Partial Class CarMeter
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Average Speed"
         '
+        'tbAvgSpeed
+        '
+        Me.tbAvgSpeed.Location = New System.Drawing.Point(87, 167)
+        Me.tbAvgSpeed.Name = "tbAvgSpeed"
+        Me.tbAvgSpeed.Size = New System.Drawing.Size(360, 22)
+        Me.tbAvgSpeed.TabIndex = 9
+        '
+        'tbAvgSpeedTime2
+        '
+        Me.tbAvgSpeedTime2.Location = New System.Drawing.Point(330, 107)
+        Me.tbAvgSpeedTime2.Name = "tbAvgSpeedTime2"
+        Me.tbAvgSpeedTime2.Size = New System.Drawing.Size(117, 22)
+        Me.tbAvgSpeedTime2.TabIndex = 8
+        '
+        'tbAvgSpeedTime1
+        '
+        Me.tbAvgSpeedTime1.Location = New System.Drawing.Point(330, 50)
+        Me.tbAvgSpeedTime1.Name = "tbAvgSpeedTime1"
+        Me.tbAvgSpeedTime1.Size = New System.Drawing.Size(117, 22)
+        Me.tbAvgSpeedTime1.TabIndex = 7
+        '
+        'bMeashureAverage
+        '
+        Me.bMeashureAverage.Location = New System.Drawing.Point(6, 167)
+        Me.bMeashureAverage.Name = "bMeashureAverage"
+        Me.bMeashureAverage.Size = New System.Drawing.Size(75, 57)
+        Me.bMeashureAverage.TabIndex = 6
+        Me.bMeashureAverage.Text = "Start"
+        Me.bMeashureAverage.UseVisualStyleBackColor = True
+        '
         'tbAverageSpeedInfo
         '
         Me.tbAverageSpeedInfo.Location = New System.Drawing.Point(87, 22)
@@ -251,36 +293,6 @@ Partial Class CarMeter
         Me.tbPoint1.Name = "tbPoint1"
         Me.tbPoint1.Size = New System.Drawing.Size(237, 22)
         Me.tbPoint1.TabIndex = 1
-        '
-        'bMeashureAverage
-        '
-        Me.bMeashureAverage.Location = New System.Drawing.Point(6, 167)
-        Me.bMeashureAverage.Name = "bMeashureAverage"
-        Me.bMeashureAverage.Size = New System.Drawing.Size(75, 57)
-        Me.bMeashureAverage.TabIndex = 6
-        Me.bMeashureAverage.Text = "Start"
-        Me.bMeashureAverage.UseVisualStyleBackColor = True
-        '
-        'tbAvgSpeedTime1
-        '
-        Me.tbAvgSpeedTime1.Location = New System.Drawing.Point(330, 50)
-        Me.tbAvgSpeedTime1.Name = "tbAvgSpeedTime1"
-        Me.tbAvgSpeedTime1.Size = New System.Drawing.Size(117, 22)
-        Me.tbAvgSpeedTime1.TabIndex = 7
-        '
-        'tbAvgSpeedTime2
-        '
-        Me.tbAvgSpeedTime2.Location = New System.Drawing.Point(330, 107)
-        Me.tbAvgSpeedTime2.Name = "tbAvgSpeedTime2"
-        Me.tbAvgSpeedTime2.Size = New System.Drawing.Size(117, 22)
-        Me.tbAvgSpeedTime2.TabIndex = 8
-        '
-        'tbAvgSpeed
-        '
-        Me.tbAvgSpeed.Location = New System.Drawing.Point(87, 167)
-        Me.tbAvgSpeed.Name = "tbAvgSpeed"
-        Me.tbAvgSpeed.Size = New System.Drawing.Size(360, 22)
-        Me.tbAvgSpeed.TabIndex = 9
         '
         'GroupBox3
         '
@@ -391,4 +403,5 @@ Partial Class CarMeter
     Friend WithEvents tbMeashurePoint As Button
     Friend WithEvents bPoint0Set As Button
     Friend WithEvents tbPoint0 As TextBox
+    Friend WithEvents cbAutostartRecord30 As CheckBox
 End Class
