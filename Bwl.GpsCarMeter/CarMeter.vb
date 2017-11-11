@@ -123,6 +123,9 @@ Public Class CarMeter
             If cbAutostopRecordAt0.Checked Then
                 If _gpsData.Speed < 1 Then _recorder.RecordStop()
             End If
+            If cbAutostopRecordAt30.Checked Then
+                If _gpsData.Speed < 29 Then _recorder.RecordStop()
+            End If
             If cbAutostopRecordAt100.Checked Then
                 If _gpsData.Speed > 110 Then _recorder.RecordStop()
             End If

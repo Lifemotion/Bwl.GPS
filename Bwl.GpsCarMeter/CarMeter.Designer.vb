@@ -53,6 +53,7 @@ Partial Class CarMeter
         Me.tbMeashurePoint = New System.Windows.Forms.Button()
         Me.bPoint0Set = New System.Windows.Forms.Button()
         Me.tbPoint0 = New System.Windows.Forms.TextBox()
+        Me.cbAutostopRecordAt30 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -66,6 +67,7 @@ Partial Class CarMeter
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.cbAutostopRecordAt30)
         Me.GroupBox1.Controls.Add(Me.cbAutostartRecord30)
         Me.GroupBox1.Controls.Add(Me.cbAutostartRecord70)
         Me.GroupBox1.Controls.Add(Me.cbAutostopRecordAt100)
@@ -109,7 +111,7 @@ Partial Class CarMeter
         'cbAutostopRecordAt100
         '
         Me.cbAutostopRecordAt100.AutoSize = True
-        Me.cbAutostopRecordAt100.Location = New System.Drawing.Point(6, 285)
+        Me.cbAutostopRecordAt100.Location = New System.Drawing.Point(5, 346)
         Me.cbAutostopRecordAt100.Name = "cbAutostopRecordAt100"
         Me.cbAutostopRecordAt100.Size = New System.Drawing.Size(195, 20)
         Me.cbAutostopRecordAt100.TabIndex = 10
@@ -119,7 +121,7 @@ Partial Class CarMeter
         'cbAutostopRecordAt0
         '
         Me.cbAutostopRecordAt0.AutoSize = True
-        Me.cbAutostopRecordAt0.Location = New System.Drawing.Point(6, 259)
+        Me.cbAutostopRecordAt0.Location = New System.Drawing.Point(6, 289)
         Me.cbAutostopRecordAt0.Name = "cbAutostopRecordAt0"
         Me.cbAutostopRecordAt0.Size = New System.Drawing.Size(181, 20)
         Me.cbAutostopRecordAt0.TabIndex = 9
@@ -348,6 +350,16 @@ Partial Class CarMeter
         Me.tbPoint0.Size = New System.Drawing.Size(237, 22)
         Me.tbPoint0.TabIndex = 1
         '
+        'cbAutostopRecordAt30
+        '
+        Me.cbAutostopRecordAt30.AutoSize = True
+        Me.cbAutostopRecordAt30.Location = New System.Drawing.Point(6, 317)
+        Me.cbAutostopRecordAt30.Name = "cbAutostopRecordAt30"
+        Me.cbAutostopRecordAt30.Size = New System.Drawing.Size(188, 20)
+        Me.cbAutostopRecordAt30.TabIndex = 13
+        Me.cbAutostopRecordAt30.Text = "Auto Stop Record < 30 kmh"
+        Me.cbAutostopRecordAt30.UseVisualStyleBackColor = True
+        '
         'CarMeter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -404,4 +416,5 @@ Partial Class CarMeter
     Friend WithEvents bPoint0Set As Button
     Friend WithEvents tbPoint0 As TextBox
     Friend WithEvents cbAutostartRecord30 As CheckBox
+    Friend WithEvents cbAutostopRecordAt30 As CheckBox
 End Class
