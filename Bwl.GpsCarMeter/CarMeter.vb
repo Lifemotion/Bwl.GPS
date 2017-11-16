@@ -98,7 +98,7 @@ Public Class CarMeter
         Dim rate = _rate
         _rate = 0
         tbGpsState.Text = "Rate: " + rate.ToString + ", Fix: " + _gpsData.DataValid.ToString
-        If rate < 2 Or _gpsData.DataValid = False Then
+        If rate < 1 Or _gpsData.DataValid = False Then
             tbGpsState.BackColor = Color.Pink
             cbOk.Checked = False
         Else

@@ -23,6 +23,7 @@ Partial Class CarMeter
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cbAutostopRecordAt30 = New System.Windows.Forms.CheckBox()
         Me.cbAutostartRecord30 = New System.Windows.Forms.CheckBox()
         Me.cbAutostartRecord70 = New System.Windows.Forms.CheckBox()
         Me.cbAutostopRecordAt100 = New System.Windows.Forms.CheckBox()
@@ -53,7 +54,6 @@ Partial Class CarMeter
         Me.tbMeashurePoint = New System.Windows.Forms.Button()
         Me.bPoint0Set = New System.Windows.Forms.Button()
         Me.tbPoint0 = New System.Windows.Forms.TextBox()
-        Me.cbAutostopRecordAt30 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -62,8 +62,8 @@ Partial Class CarMeter
         'logWriter
         '
         Me.logWriter.ExtendedView = False
-        Me.logWriter.Location = New System.Drawing.Point(0, 463)
-        Me.logWriter.Size = New System.Drawing.Size(978, 168)
+        Me.logWriter.Location = New System.Drawing.Point(0, 510)
+        Me.logWriter.Size = New System.Drawing.Size(779, 168)
         '
         'GroupBox1
         '
@@ -76,17 +76,25 @@ Partial Class CarMeter
         Me.GroupBox1.Controls.Add(Me.cbOk)
         Me.GroupBox1.Controls.Add(Me.bRecordStop)
         Me.GroupBox1.Controls.Add(Me.bRecord)
-        Me.GroupBox1.Controls.Add(Me.tbSpeed)
         Me.GroupBox1.Controls.Add(Me.tbLocation)
-        Me.GroupBox1.Controls.Add(Me.tbTime)
         Me.GroupBox1.Controls.Add(Me.tbGpsState)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 27)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 117)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(297, 381)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "GPS"
+        '
+        'cbAutostopRecordAt30
+        '
+        Me.cbAutostopRecordAt30.AutoSize = True
+        Me.cbAutostopRecordAt30.Location = New System.Drawing.Point(6, 317)
+        Me.cbAutostopRecordAt30.Name = "cbAutostopRecordAt30"
+        Me.cbAutostopRecordAt30.Size = New System.Drawing.Size(188, 20)
+        Me.cbAutostopRecordAt30.TabIndex = 13
+        Me.cbAutostopRecordAt30.Text = "Auto Stop Record < 30 kmh"
+        Me.cbAutostopRecordAt30.UseVisualStyleBackColor = True
         '
         'cbAutostartRecord30
         '
@@ -169,11 +177,10 @@ Partial Class CarMeter
         '
         'tbSpeed
         '
-        Me.tbSpeed.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tbSpeed.Location = New System.Drawing.Point(154, 53)
+        Me.tbSpeed.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.tbSpeed.Location = New System.Drawing.Point(12, 27)
         Me.tbSpeed.Name = "tbSpeed"
-        Me.tbSpeed.Size = New System.Drawing.Size(137, 22)
+        Me.tbSpeed.Size = New System.Drawing.Size(297, 80)
         Me.tbSpeed.TabIndex = 4
         '
         'tbLocation
@@ -187,9 +194,10 @@ Partial Class CarMeter
         '
         'tbTime
         '
-        Me.tbTime.Location = New System.Drawing.Point(6, 53)
+        Me.tbTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.tbTime.Location = New System.Drawing.Point(315, 27)
         Me.tbTime.Name = "tbTime"
-        Me.tbTime.Size = New System.Drawing.Size(142, 22)
+        Me.tbTime.Size = New System.Drawing.Size(455, 80)
         Me.tbTime.TabIndex = 2
         '
         'tbGpsState
@@ -220,7 +228,7 @@ Partial Class CarMeter
         Me.GroupBox2.Controls.Add(Me.tbPoint2)
         Me.GroupBox2.Controls.Add(Me.tbPoint1)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(315, 27)
+        Me.GroupBox2.Location = New System.Drawing.Point(315, 117)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(455, 231)
         Me.GroupBox2.TabIndex = 3
@@ -304,7 +312,7 @@ Partial Class CarMeter
         Me.GroupBox3.Controls.Add(Me.bPoint0Set)
         Me.GroupBox3.Controls.Add(Me.tbPoint0)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(315, 264)
+        Me.GroupBox3.Location = New System.Drawing.Point(315, 354)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(455, 144)
         Me.GroupBox3.TabIndex = 4
@@ -350,26 +358,20 @@ Partial Class CarMeter
         Me.tbPoint0.Size = New System.Drawing.Size(237, 22)
         Me.tbPoint0.TabIndex = 1
         '
-        'cbAutostopRecordAt30
-        '
-        Me.cbAutostopRecordAt30.AutoSize = True
-        Me.cbAutostopRecordAt30.Location = New System.Drawing.Point(6, 317)
-        Me.cbAutostopRecordAt30.Name = "cbAutostopRecordAt30"
-        Me.cbAutostopRecordAt30.Size = New System.Drawing.Size(188, 20)
-        Me.cbAutostopRecordAt30.TabIndex = 13
-        Me.cbAutostopRecordAt30.Text = "Auto Stop Record < 30 kmh"
-        Me.cbAutostopRecordAt30.UseVisualStyleBackColor = True
-        '
         'CarMeter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(978, 634)
+        Me.ClientSize = New System.Drawing.Size(779, 681)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.tbSpeed)
+        Me.Controls.Add(Me.tbTime)
         Me.Name = "CarMeter"
         Me.Text = "Bwl CarMeter"
+        Me.Controls.SetChildIndex(Me.tbTime, 0)
+        Me.Controls.SetChildIndex(Me.tbSpeed, 0)
         Me.Controls.SetChildIndex(Me.logWriter, 0)
         Me.Controls.SetChildIndex(Me.GroupBox1, 0)
         Me.Controls.SetChildIndex(Me.GroupBox2, 0)

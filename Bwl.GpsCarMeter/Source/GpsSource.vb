@@ -27,7 +27,7 @@
     End Sub
 
     Public Sub Open() Implements IGpsSource.Open
-        _port.BaudRate = 38400
+        _port.BaudRate = 115200
         _port.PortName = IO.Ports.SerialPort.GetPortNames(0)
         _port.Open()
     End Sub
